@@ -1,5 +1,15 @@
 #!/usr/bin/env python
 
+# From http://stackoverflow.com/a/12061891/396967
+try:
+    import setuptools
+    # setup_requires is parsed and acted upon immediately; from here on out
+    # numpy is installed and importable.
+    setuptools.dist.Distribution(dict(setup_requires='numpy >= 1.0.1'))
+except ImportError:
+    # If setuptools is not available NumPy needs to be installed beforehand
+    pass
+
 from distutils.core import setup
 from distutils.extension import Extension
 from distutils.cmd import Command
